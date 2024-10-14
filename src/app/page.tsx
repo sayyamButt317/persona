@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react';
 
+
 interface User {
   phoneNumber: string;
   username: string; 
@@ -15,14 +16,8 @@ export default function Home() {
   const handleSearch = async () => {
     try {
       setError('');
-      const response = await fetch(`/api/fetchdata/${searchInput}`,
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      setSearchResult(null);
+      const response = await fetch(`/api/getdata/${searchInput}`);
       const data = await response.json();
   
       if (response.ok && data.statusCode === 200) {
@@ -45,7 +40,7 @@ export default function Home() {
             placeholder="Search Phone Number..."
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-            className="w-full outline-none bg-black text-white-600 text-sm px-4 py-3"
+            className="w-full outline-none bg-white text-black-600 text-sm px-4 py-3"
           />
           <button
             type="button"
@@ -76,3 +71,27 @@ export default function Home() {
   );
 }
 
+
+
+// import React from 'react';
+
+// interface User {
+//   id:string
+//   address: string;
+//   username: string; 
+//   phoneNumber:string
+// }
+
+
+// export default async function Home() {
+//   const response = await fetch('http://localhost:3000/api/getdata'); // Use absolute URL
+//   const posts: User[] = await response.json();
+
+//   return (
+//     <ul>
+//       {posts.map((post) => (
+//         <li key={post.id}>{post.username} - {post.phoneNumber} - {post.address}</li>
+//       ))}
+//     </ul>
+//   );
+// }
