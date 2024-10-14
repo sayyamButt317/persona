@@ -71,27 +71,3 @@ export default function Home() {
   );
 }
 
-
-
-// import React from 'react';
-
-// interface User {
-//   id:string
-//   address: string;
-//   username: string; 
-//   phoneNumber:string
-// }
-
-
-// export default async function Home() {
-//   const response = await fetch('http://localhost:3000/api/getdata'); // Use absolute URL
-//   const posts: User[] = await response.json();
-
-//   return (
-//     <ul>
-//       {posts.map((post) => (
-//         <li key={post.id}>{post.username} - {post.phoneNumber} - {post.address}</li>
-//       ))}
-//     </ul>
-//   );
-// }
