@@ -1,7 +1,7 @@
 "use client";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 // import { useState } from "react";
-
+import Image from "next/image";
 // interface User {
 //   phoneNumber: string;
 //   username: string;
@@ -30,14 +30,50 @@ export default function Home() {
   //     console.error(err);
   //   }
   // };
+  const users = [
+    { id: 1, name: "Alice Johnson", role: "Designer", position: "top-1/3 left-1/6" },
+    { id: 2, name: "Bob Smith", role: "Developer", position: "top-1/3 right-12" },
+    { id: 3, name: "Carol Williams", role: "Manager", position: "bottom-1/4 left-1/3" },
+    { id: 4, name: "David Brown", role: "Marketer", position: "top-1/3 left-1/4" },
+    { id: 5, name: "Eva Davis", role: "Analyst", position: "top-1/6 right-2/3" },
+    { id: 6, name: "Frank Miller", role: "Consultant", position: "top-2/3 right-16" },
+  ]
 
   return (
-    <div className="w-full items-center justify-items-center">
-      <BackgroundBeamsWithCollision>
-        <div className="font-satoshi font-bold text-3xl">Unlock the Mystery</div>
-
-      </BackgroundBeamsWithCollision>{" "}
-    </div>
+    <>
+    <BackgroundBeamsWithCollision>
+      <div className="w-full min-h-screen flex flex-col items-center justify-center p-8 relative overflow-hidden">
+        {users.map((user, index) => (
+          <div
+            key={user.id}
+            className={`absolute ${user.position} transform -translate-x-1/2 -translate-y-1/2 flex items-center space-x-4 animate-fade-in`}
+            style={{ animationDelay: `${index * 0.2}s` }}
+          >
+            <Image
+              src={`/assets/avatar.png?height=80&width=80&text=${user.name.charAt(0)}`}
+              alt={user.name}
+              width={80}
+              height={80}
+              className="rounded-full border-2 border-white"
+            />
+            <div className="text-left">
+              <p className="text-white font-semibold">{user.name}</p>
+              <p className="text-neutral-400 text-sm">{user.role}</p>
+            </div>
+          </div>
+        ))}
+        <div className="z-10 text-center">
+          <h1 className="text-5xl bg-clip-text mb-6 bg-gradient-to-b from-neutral-200 to-neutral-600 font-sans font-bold">
+            Unlock the Mystery
+          </h1>
+          <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm">
+            Uncover valuable information at your fingertips. Search with ease and access crucial details about anyone in an instant.
+          </p>
+        </div>
+      </div>
+    </BackgroundBeamsWithCollision>
+   
+    </>
     //   <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
     //     <div className="flex rounded-md border-2 border-blue-500 overflow-hidden max-w-md mx-auto font-[sans-serif]">
     //       <input

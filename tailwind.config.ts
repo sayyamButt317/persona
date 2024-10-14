@@ -28,6 +28,12 @@ const config: Config = {
         letterSpacing: '-0.02em',
         fontWeight: '700',
       }],
+      '4xl': '2.441rem',
+      '5xl':[ '5.052rem',{
+        lineHeight: '3.25rem',
+        letterSpacing: '-0.03em',
+        fontWeight: '900',
+      }],
     }
   },
   plugins: [],
