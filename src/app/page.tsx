@@ -7,9 +7,10 @@ import { motion } from "framer-motion";
 import avatar from "../../public/assets/avatar.png"
 
 interface User {
-  phoneNumber: string;
-  username: string;
-  address: string;
+  Mobile: string;
+  Name: string;
+  Address: string;
+  CNIC:string;
 }
 
 export default function Component() {
@@ -115,8 +116,9 @@ export default function Component() {
               transition={{ duration: 0.3 }}
             >
               <h3 className="mb-2 font-semibold">User Found:</h3>
-              <p>Username: {searchResult.username}</p>
-              <p>Address: {searchResult.address}</p>
+              <p>Username: {searchResult.Name}</p>
+              <p>Address: {searchResult.Address}</p>
+              <p>CNIC: {searchResult.CNIC}</p>
             </motion.div>
           )}
           {error && (
